@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysOpsCenter.net | Coming Soon</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color-scheme: dark light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at top, #141f3e 0, #050814 45%, #020308 100%);
+      color: #f5f5f5;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: rgba(9, 13, 28, 0.92);
+      border-radius: 18px;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(120, 160, 255, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top left, rgba(91, 143, 255, 0.2), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(0, 198, 255, 0.16), transparent 55%);
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(18, 30, 66, 0.9);
+      border: 1px solid rgba(150, 186, 255, 0.6);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.3rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #3dd68c;
+      box-shadow: 0 0 8px rgba(61, 214, 140, 0.9);
+      animation: pulse 1.7s infinite ease-out;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 2.6vw + 1.4rem, 2.8rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .accent {
+      background: linear-gradient(120deg, #82b3ff, #00d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      color: #c5c9f5;
+      max-width: 40rem;
+      line-height: 1.5;
+      margin-bottom: 1.7rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 160, 255, 0.55);
+      background: rgba(10, 18, 48, 0.9);
+      color: #d9e1ff;
+      white-space: nowrap;
+    }
+
+    .footnote {
+      font-size: 0.8rem;
+      color: #8d93c7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footnote span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .dot-separator::before {
+      content: "•";
+      opacity: 0.6;
+      font-size: 0.9em;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1.6rem 1.5rem;
+        border-radius: 16px;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      .footnote {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="badge" aria-label="Status: in progress">
+      <span class="badge-dot" aria-hidden="true"></span>
+      <span>sysopscenter.net is warming up</span>
+    </div>
+
+    <h1>
+      Welcome to <span class="accent">SysOpsCenter.net</span>
+    </h1>
+
+    <p class="subtitle">
+      This will soon become your focused hub for news, insights, and practical updates about
+      system operations, cloud platforms, and DevOps engineering.
+      We are building a clean, signal‑only destination for ops professionals and enthusiasts.
+    </p>
+
+    <div class="pill-row" aria-label="Topics">
+      <span class="pill">System Operations</span>
+      <span class="pill">Cloud Infrastructure</span>
+      <span class="pill">DevOps &amp; Automation</span>
+      <span class="pill">Best Practices</span>
+      <span class="pill">Tools &amp; Workflows</span>
+    </div>
+
+    <div class="footnote">
+      <span id="status-text">Live soon — stay tuned.</span>
+      <span>
+        <span class="dot-separator"></span>
+        <span id="year"></span> SysOpsCenter.net
+      </span>
+    </div>
+  </main>
+
+  <script>
+    // Minimal JavaScript for small dynamic touches
+    (function () {
+      // Set current year
+      var yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // Rotate short status messages for a bit of life on the page
+      var messages = [
+        "Live soon — stay tuned.",
+        "Curating content for ops, cloud & DevOps.",
+        "Designing a clean home for system operations news.",
+        "Preparing practical guides, tips & playbooks."
+      ];
+
+      var statusEl = document.getElementById("status-text");
+      var index = 0;
+
+      function rotateStatus() {
+        if (!statusEl) return;
+        index = (index + 1) % messages.length;
+        statusEl.textContent = messages[index];
+      }
+
+      setInterval(rotateStatus, 5000);
+    })();
+  </script>
+</body>
+</html>
